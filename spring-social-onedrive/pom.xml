@@ -1,0 +1,93 @@
+<project 
+	xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+	<modelVersion>4.0.0</modelVersion>
+  	<groupId>org.springframework.social</groupId>
+  	<artifactId>spring-social-onedrive</artifactId>
+  	<version>0.0.1</version>
+  	<packaging>jar</packaging>
+  	<name>spring-social-onedrive</name>
+  	<description>
+  		A provider extension for Spring Social to enable connectivity with Microsoft OneDrive (earlier SkyDrive) 
+  		and API binding for Microsoft OneDrive REST API.
+  	</description>    
+  
+  	<developers>
+		<developer>
+  			<name>Suresh Kumar (yarli4u)</name>
+  			<email>yarlagaddasureshkumar@outlook.com</email>
+  		</developer>
+  	</developers>
+  	
+  	<properties>
+	
+		<!-- Generic properties -->
+		<java.version>1.6</java.version>
+		
+		<!-- Spring -->
+		<springframework.version>3.2.8.RELEASE</springframework.version>
+		<springframework-social-core.version>1.0.3.RELEASE</springframework-social-core.version>
+		
+		<!-- Jackson - Java JSON Parser and Data Binder -->
+		<jacksonVersion>1.9.13</jacksonVersion>
+		
+		<!-- Test -->
+		<junit.version>4.11</junit.version>
+
+	</properties>
+	
+	<dependencies>
+		
+		<!-- Spring Core and Social Core -->
+		<dependency>
+        	<groupId>org.springframework</groupId>
+        	<artifactId>spring-context</artifactId>
+        	<version>${springframework.version}</version>
+    	</dependency>
+
+		<dependency>
+	        <groupId>org.springframework.social</groupId>
+	        <artifactId>spring-social-core</artifactId>
+	        <version>${springframework-social-core.version}</version>
+    	</dependency>		
+
+		<!-- Jackson -->
+		<dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${jacksonVersion}</version>
+        </dependency>
+        
+		<!-- Test Artifacts - Social Test and JUNIT. -->
+		<dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-test</artifactId>
+            <version>${springframework-social-core.version}</version>
+        </dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+	
+	<build>   
+    	<plugins>    	
+    		<plugin>
+	        	<groupId>org.apache.maven.plugins</groupId>
+	        	<artifactId>maven-compiler-plugin</artifactId>
+	        	<version>3.1</version>
+	        	<configuration>
+	          		<source>1.6</source>
+	          		<target>1.6</target>
+	        	</configuration>
+      		</plugin>      	     	
+    	</plugins>     
+	</build>
+  	
+</project>
