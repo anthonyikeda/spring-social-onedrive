@@ -9,9 +9,10 @@ import org.springframework.social.support.ClientHttpRequestFactorySelector;
 
 public class OneDriveTemplate extends AbstractOAuth2ApiBinding implements OneDrive {
 
+	private FriendlyNameOperations friendlynameOperations;
 	
 	public OneDriveTemplate() {
-		super.setRequestFactory(ClientHttpRequestFactorySelector.bufferRequests(getRestTemplate().getRequestFactory()));
+		initialize();
 	}
 	
 	@Override
@@ -27,22 +28,24 @@ public class OneDriveTemplate extends AbstractOAuth2ApiBinding implements OneDri
 
 	@Override
 	public FriendlyNameOperations friendlyNameOperations() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return friendlynameOperations;
 	}
 
-	@Override
-	public void folderOperations() {
-		// TODO Auto-generated method stub
-
+	/**
+	 * Private Helpers.
+	 */
+	private void initialize() {
+		
+		super.setRequestFactory(ClientHttpRequestFactorySelector.bufferRequests(getRestTemplate().getRequestFactory()));
+		initsubs();
 	}
+	
+	private void initsubs() {
 
-	@Override
-	public void fileOperations() {
-		// TODO Auto-generated method stub
-
+		friendlynameOperations = new FriendlyNameTemplate();
 	}
-
+	
 	/**
 	 * URL Constants.
 	 */

@@ -1,5 +1,7 @@
 package org.springframework.social.onedrive.api;
 
+import java.util.List;
+
 /**
  * Accessing OneDrive folders using Friendly Names.
  * 
@@ -8,9 +10,9 @@ package org.springframework.social.onedrive.api;
  */
 public interface FriendlyNameOperations {
 
-	void getCameraRoll();
-	void getMyDocuments();
-	void getMyPhotos();
-	void getPublicDocuments();
-	void getRecentDocuments();
+	List<Metadata> getCameraRoll();
+	List<Metadata> getMyDocuments();
+	List<Metadata> getMyPhotos();
+	List<Metadata> getPublicDocuments();
+	List<Metadata> getRecentDocuments();
 }

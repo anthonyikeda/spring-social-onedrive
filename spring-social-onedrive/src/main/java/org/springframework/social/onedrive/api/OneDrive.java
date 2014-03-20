@@ -26,6 +26,5 @@ public interface OneDrive {
 	 * @return FriendlyNameOperations
 	 */
 	FriendlyNameOperations friendlyNameOperations();
-	void folderOperations();
-	void fileOperations();
+	
 }
