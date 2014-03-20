@@ -4,6 +4,7 @@ import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 import org.springframework.social.onedrive.api.FriendlyNameOperations;
 import org.springframework.social.onedrive.api.OneDrive;
 import org.springframework.social.onedrive.api.OneDriveUserProfile;
+import org.springframework.social.onedrive.api.UserQuota;
 import org.springframework.social.support.ClientHttpRequestFactorySelector;
 
 public class OneDriveTemplate extends AbstractOAuth2ApiBinding implements OneDrive {
@@ -15,7 +16,13 @@ public class OneDriveTemplate extends AbstractOAuth2ApiBinding implements OneDri
 	
 	@Override
 	public OneDriveUserProfile getUserProfile() {
-		return getRestTemplate().getForObject(ACCOUNT_INFO_URL,OneDriveUserProfile.class);		
+		return getRestTemplate().getForObject(USER_ACCOUNT_INFO_URL,OneDriveUserProfile.class);		
+	}
+
+	@Override
+	public UserQuota getUserQuota() {
+
+		return getRestTemplate().getForObject(USER_QUOTA_URL,UserQuota.class);
 	}
 
 	@Override
@@ -39,5 +46,6 @@ public class OneDriveTemplate extends AbstractOAuth2ApiBinding implements OneDri
 	/**
 	 * URL Constants.
 	 */
-	public static final String ACCOUNT_INFO_URL = "/me";
+	public static final String USER_ACCOUNT_INFO_URL = "/me";
+	public static final String USER_QUOTA_URL = "/me/skydrive/quota";
 }

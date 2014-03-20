@@ -18,6 +18,11 @@ public interface OneDrive {
 	
 	/**
 	 * 
+	 */
+	UserQuota getUserQuota();
+	
+	/**
+	 * 
 	 * @return FriendlyNameOperations
 	 */
 	FriendlyNameOperations friendlyNameOperations();
