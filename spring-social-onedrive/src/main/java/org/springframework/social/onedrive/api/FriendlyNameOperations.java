@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface FriendlyNameOperations {
 
+	List<Metadata> getRootContents();
+	Metadata getOnedriveDirectory();
 	List<Metadata> getCameraRoll();
 	List<Metadata> getMyDocuments();
 	List<Metadata> getMyPhotos();

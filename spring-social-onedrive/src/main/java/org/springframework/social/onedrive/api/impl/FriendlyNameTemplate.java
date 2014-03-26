@@ -21,35 +21,48 @@ public class FriendlyNameTemplate extends AbstractOnedriveOperations implements 
 	@Override
 	public List<Metadata> getCameraRoll() {
 
-		return getMetadataList(ME_CAMERA_ROLL_URL);		
+		return getMetadata(ME_CAMERA_ROLL_URL);		
 	}
 
 	@Override
 	public List<Metadata> getMyDocuments() {
 		
-		return getMetadataList(ME_DOCUMENTS_URL);
+		return getMetadata(ME_DOCUMENTS_URL);
 	}
 
 	@Override
 	public List<Metadata> getMyPhotos() {
 		
-		return getMetadataList(ME_PHOTOS_URL);
+		return getMetadata(ME_PHOTOS_URL);
 	}
 
 	@Override
 	public List<Metadata> getPublicDocuments() {
 		
-		return getMetadataList(ME_PUBLIC_DOCUMENTS_URL);
+		return getMetadata(ME_PUBLIC_DOCUMENTS_URL);
 	}
 
 	@Override
 	public List<Metadata> getRecentDocuments() {
 		
-		return getMetadataList(ME_RECENT_DOCUMENTS_URL);
+		return getMetadata(ME_RECENT_DOCUMENTS_URL);
+	}
+
+	
+	@Override
+	public List<Metadata> getRootContents() {
+
+		return getMetadata(ME_ROOT_CONTENTS);
+	}
+
+	@Override
+	public Metadata getOnedriveDirectory() {
+
+		return restTemplate.getForObject(buildURI(ME_ONERIVE_DETAILS), Metadata.class);
 	}
 
 	//private helpers.
-	private List<Metadata> getMetadataList(String path) {
+	private List<Metadata> getMetadata(String path) {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode jsonNode = restTemplate.getForObject(buildURI(path), JsonNode.class);
@@ -60,12 +73,13 @@ public class FriendlyNameTemplate extends AbstractOnedriveOperations implements 
 			throw new RuntimeException(ex);
 		}
 	}
-	
+		
 	//URL Constants.
 	public static final String ME_DOCUMENTS_URL="/me/skydrive/my_documents";
 	public static final String ME_CAMERA_ROLL_URL="/me/skydrive/camera_roll";
 	public static final String ME_PHOTOS_URL="/me/skydrive/my_photos";
 	public static final String ME_PUBLIC_DOCUMENTS_URL="/me/skydrive/public_documents";
 	public static final String ME_RECENT_DOCUMENTS_URL="/me/skydrive/recent_docs";
-	
+	public static final String ME_ROOT_CONTENTS="me/skydrive/files";
+	public static final String ME_ONERIVE_DETAILS="me/skydrive";
 }
