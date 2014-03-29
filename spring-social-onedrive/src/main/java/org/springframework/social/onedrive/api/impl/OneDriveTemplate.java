@@ -17,6 +17,7 @@ public class OneDriveTemplate extends AbstractOAuth2ApiBinding implements OneDri
 	
 	public OneDriveTemplate(String accessToken) {
 		super(accessToken);
+		initialize();
 	}
 	
 	@Override
