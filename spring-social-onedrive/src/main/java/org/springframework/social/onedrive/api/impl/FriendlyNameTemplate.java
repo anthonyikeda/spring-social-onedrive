@@ -52,13 +52,19 @@ public class FriendlyNameTemplate extends AbstractOnedriveOperations implements 
 	@Override
 	public List<Metadata> getRootContents() {
 
-		return getMetadata(ME_ROOT_CONTENTS);
+		return getMetadata(ME_ROOT_CONTENTS_URL);
 	}
 
 	@Override
 	public Metadata getOnedriveDirectory() {
 
-		return restTemplate.getForObject(buildURI(ME_ONERIVE_DETAILS), Metadata.class);
+		return restTemplate.getForObject(buildURI(ME_ONERIVE_DETAILS_URL), Metadata.class);
+	}
+
+	
+	@Override
+	public List<Metadata> getSharedDocuments() {
+		return getMetadata(ME_SHARED_DOCUMENTS_URL);
 	}
 
 	//private helpers.
@@ -80,6 +86,7 @@ public class FriendlyNameTemplate extends AbstractOnedriveOperations implements 
 	public static final String ME_PHOTOS_URL="/me/skydrive/my_photos";
 	public static final String ME_PUBLIC_DOCUMENTS_URL="/me/skydrive/public_documents";
 	public static final String ME_RECENT_DOCUMENTS_URL="/me/skydrive/recent_docs";
-	public static final String ME_ROOT_CONTENTS="me/skydrive/files";
-	public static final String ME_ONERIVE_DETAILS="me/skydrive";
+	public static final String ME_ROOT_CONTENTS_URL="me/skydrive/files";
+	public static final String ME_ONERIVE_DETAILS_URL="me/skydrive";
+	public static final String ME_SHARED_DOCUMENTS_URL="me/skydrive/shared";
 }

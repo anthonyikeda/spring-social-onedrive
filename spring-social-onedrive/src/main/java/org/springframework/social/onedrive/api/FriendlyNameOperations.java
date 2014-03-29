@@ -17,5 +17,6 @@ public interface FriendlyNameOperations {
 	List<Metadata> getMyPhotos();
 	List<Metadata> getPublicDocuments();
 	List<Metadata> getRecentDocuments();
+	List<Metadata> getSharedDocuments();
 	
 }
